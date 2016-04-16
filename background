@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+images_dir=$1
+images=($(find $images_dir -type f -name '*' | egrep "je?pg|png" ))
+images_c="${#images[*]}"
+image_r=$(( RANDOM % images_c ))
+image="${images[$image_r]}"
+printf '%s' "$image"
+feh --bg-fill "$image"

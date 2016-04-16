@@ -1,0 +1,17 @@
+#!/bin/bash
+#text=$(awk -F"[][]" '/dB/ { print $2 $6 }' <(amixer sget Master))
+text=$(pactl list sinks | grep '^[[:space:]]Volume:' | \
+    head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,')
+# mute=${text#*%}
+text=(${text//%/ })
+pct=${text[0]}
+mute=${text[1]}
+if [ "$mute" = "off" ]; then
+	echo " 🔇 muted ";
+elif [ $pct -lt 10 ] ; then
+	echo "  $pct% ";
+elif [ $text -lt 50 ] ; then
+	echo "  $pct% ";
+else
+	echo "  $pct% ";
+fi

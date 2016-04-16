@@ -1,0 +1,6 @@
+#!/bin/bash
+while :
+do
+  ~/.config/i3/bar/title
+  sleep 1
+done
