@@ -96,14 +96,25 @@ set $ws1 "1:  "
 set $ws2 "2: >_ "
 set $ws3 "3:  "
 set $ws4 "4: "
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9: "
+set $ws5 "5: 5"
+set $ws6 "6: 6"
+set $ws7 "7: 7"
+set $ws8 "8: 8"
+set $ws9 "9: 9"
 set $ws0 "10:  "
 
-set $wsf1 " 1  "
+set $wsf1 "1:  "
+set $wsf2 "2: "
+set $wsf3 "3: F3"
+set $wsf4 "4: F4"
+set $wsf5 "5: F5"
+set $wsf6 "6: F6"
+set $wsf7 "7: F7"
+set $wsf8 "8: F8"
+set $wsf9 "9: F9"
+set $wsf10 "10: F10"
+set $wsf11 "11: F11"
+set $wsf12 "12: F12"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -117,7 +128,18 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws0
 
-bindsym $mod+f1 workspace $wsf1
+bindsym $mod+F1 workspace $wsf1
+bindsym $mod+F2 workspace $wsf2
+bindsym $mod+F3 workspace $wsf3
+bindsym $mod+F4 workspace $wsf4
+bindsym $mod+F5 workspace $wsf5
+bindsym $mod+F6 workspace $wsf6
+bindsym $mod+F7 workspace $wsf7
+bindsym $mod+F8 workspace $wsf8
+bindsym $mod+F9 workspace $wsf9
+bindsym $mod+F10 workspace $wsf10
+bindsym $mod+F11 workspace $wsf11
+bindsym $mod+F12 workspace $wsf12
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -131,16 +153,27 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws0
 
-bindsym $mod+Shift+f1 move container to workspace $wsf1
+bindsym $mod+Shift+F1 move container to workspace $wsf1
+bindsym $mod+Shift+F2 move container to workspace $wsf2
+bindsym $mod+Shift+F3 move container to workspace $wsf3
+bindsym $mod+Shift+F4 move container to workspace $wsf4
+bindsym $mod+Shift+F5 move container to workspace $wsf5
+bindsym $mod+Shift+F6 move container to workspace $wsf6
+bindsym $mod+Shift+F7 move container to workspace $wsf7
+bindsym $mod+Shift+F8 move container to workspace $wsf8
+bindsym $mod+Shift+F9 move container to workspace $wsf9
+bindsym $mod+Shift+F10 move container to workspace $wsf10
+bindsym $mod+Shift+F11 move container to workspace $wsf11
+bindsym $mod+Shift+F12 move container to workspace $wsf12
 
 # Assign app to a workspace
 # to find the class use xprop
-assign [class="google-chrome"] $ws1
-assign [class="Atom"] $ws3
-assign [class="jetbrains-idea-ce"] $ws3
-assign [class="jetbrains-studio"] $ws4
+#assign [class="google-chrome"] $ws1
+#assign [class="Atom"] $ws3
+#assign [class="jetbrains-idea-ce"] $ws3
+#assign [class="jetbrains-studio"] $ws4
 assign [class="Rhythmbox"] $ws0
-assign [class="Slack"] $ws9
+assign [class="Slack"] $wsf1
 
 # workspace default monitors
 workspace $ws1 output LVDS1
@@ -218,7 +251,7 @@ bar {
   font pango:Anonymous Pro for Powerline Regular 8
   strip_workspace_numbers yes
 
-  tray_output none
+  tray_output LVDS1
   tray_padding 0
 
   colors {
@@ -238,7 +271,9 @@ exec --no-startup-id nm-applet
 # Wallpaper
 #exec_always feh --bg-fill ~/Imagens/Wallpapers/jetpack-eye.jpg
 exec_always ~/.config/i3/background ~/Imagens/Wallpapers/
-exec watch -n60 ~/.config/i3/background ~/Imagens/Wallpapers/
+#exec_always watch -n60 ~/.config/i3/background ~/Imagens/Wallpapers/
+exec while true; do ~/.config/i3/background ~/Imagens/Wallpapers/ ; sleep 60; done
+bindsym $mod+shift+b exec ~/.config/i3/background ~/Imagens/Wallpapers/
 
 # make the focus follows the mouse
 #focus_follows_mouse yes
@@ -258,15 +293,24 @@ bindsym $mod+Return exec i3-sensible-terminal zsh
 bindsym $mod+shift+x exec ~/.config/i3/i3lock-simple ~/Imagens/face_circle.png
 ## bindsym $mod+control+x exec ~/.config/i3/i3lock-simple ~/Imagens/face_circle.png  && sudo pm-hibernate
 
-# Printscreen
-## Just Print
+
+# Printscreen / screenshoot
+
+## Print
 bindsym Print exec scrot -e 'mv $f ~/Imagens/'
+bindsym --release control+Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
+
 ## Print selected area
 bindsym --release Shift+Print exec scrot -s -e 'mv $f ~/Imagens/'
+bindsym --release control+Shift+Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
+
 ## Print current window
-bindsym $mod+Print exec scrot -u -e 'mv $f ~/Imagens/'
-## Print and Gimp
-bindsym Control+Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
+bindsym --release $mod+Print exec scrot -u -e 'mv $f ~/Imagens/'
+bindsym --release control+$mod+Print exec scrot -u -e 'mv $f /tmp/ && gimp /tmp/$f'
+
+## ColorPicker
+bindsym --release $mod+Insert exec java -jar colorpicker.jar
+
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
