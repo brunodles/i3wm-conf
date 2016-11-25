@@ -1,6 +1,7 @@
 #!/bin/bash
 declare background
 declare foreground
+declare divider
 declare use
 declare spaces
 declare text
@@ -12,6 +13,7 @@ find() {
     case "$i" in
       --foreground=*|-f=*) foreground="${i#*=}" ; shift;;
       --background=*|-b=*) background="${i#*=}" ; shift;;
+      --divider=*|-d=*) divider="${i#*=}" ; shift;;
       --use=*|-u=*) use="${i#*=}" ; shift;;
       --space=*|-s=*) spaces="${i#*=}" ; shift;;
       --space|-s) spaces="1" ; shift;;
@@ -43,6 +45,9 @@ main() {
   output="<span size=\"large\""
   if [ ! -z "$background" ] ; then
     output+=" background=\"$background\""
+  fi
+  if [ ! -z "$divider" ] ; then
+    output+=" foreground=\"$divider\">${text}</span><span size=\"large\" background=\"$divider\""
   fi
   if [ ! -z "$foreground" ] ; then
     output+=" foreground=\"$foreground\""
