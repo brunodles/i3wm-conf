@@ -9,7 +9,16 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+
 set $mod Mod4
+
+# colors
+set $bg-color 	         #2f343f
+set $inactive-bg-color   #3d4351
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
+
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -41,6 +50,9 @@ bindsym $mod+Shift+q kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# Custom dmenu
+bindsym $mod+d exec dmenu_run -nb "$bg-color" -nf "$text-color" -sb "$urgent-bg-color" -sf "$text-color"
 
 # change focus
 bindsym $mod+j focus left
@@ -220,16 +232,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# colors
-set $bg-color 	         #2f343f
-set $inactive-bg-color   #3d4351
-set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
-
-
-# Custom dmenu
-bindsym $mod+d exec dmenu_run -nb "$bg-color" -nf "$text-color" -sb "$urgent-bg-color" -sf "$text-color"
 
 # window colors
 #                       border              background         text                 indicator
