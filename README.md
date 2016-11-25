@@ -32,6 +32,9 @@ I'm not using this, but if you want, you can install a custom bar.
     sudo make install
 ```
 
+## Bluetooth utils
+`bluetooth-wizard`
+
 ## Install font awesome
 This is used on the **i3bar**, to add custom icons, if you don't want custom icon on the bar remove it from the `config` file.
 ```bash

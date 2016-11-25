@@ -263,6 +263,28 @@ bar {
     	urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
   }
 }
+#bar {
+#  position          top
+#  status_command    i3blocks -c ~/.config/i3/i3blocks.bottom.conf
+#  font pango:Anonymous Pro for Powerline Regular 8
+#  strip_workspace_numbers yes
+#  mode hide
+##  hidden_state hide
+#  modifier Mod4
+##  workspace_buttons false
+#
+#  tray_output LVDS1
+#  tray_padding 0
+#
+#  colors {
+#      background $bg-color
+#      separator #757575
+#    	#                  border             background         text
+#    	focused_workspace  $bg-color          $bg-color          $text-color
+#    	inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+#    	urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+#  }
+#}
 
 # Network Manager
 exec --no-startup-id nm-applet
