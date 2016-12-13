@@ -13,10 +13,15 @@ git clone https://github.com/brunodles/i3wm-conf.git .
 wget https://github.com/FortAwesome/Font-Awesome/raw/master/fonts/fontawesome-webfont.ttf
 mv fontawesome-webfont.ttf ~/.fonts/
 
+# To change the background
 sudo apt-get install feh
+# File explorer
 sudo apt-get install thunar
+# Custom theme
 sudo apt-get install gnome-icon-theme-full
 sudo apt-get install lxappearance
+# Lockscreen
+sudo apt-get install scrot
 
 # Install zsh
 sudo apt-get install zsh
