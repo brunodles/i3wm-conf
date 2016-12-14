@@ -10,6 +10,7 @@ cd .config/i3/
 git clone https://github.com/brunodles/i3wm-conf.git .
 
 # Install FontAwesome
+mkdir ~/.fonts
 wget https://github.com/FortAwesome/Font-Awesome/raw/master/fonts/fontawesome-webfont.ttf
 mv fontawesome-webfont.ttf ~/.fonts/
 
