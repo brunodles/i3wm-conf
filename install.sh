@@ -4,8 +4,8 @@ echo
 echo "We will install the fonts into system, so the root permission/password is required during installing"
 echo 
 # Install I3wm and I3blocks
-sudo apt-get install i3
-sudo apt-get install i3blocks
+sudo apt-get install i3 -y
+sudo apt-get install i3blocks -y
 
 # Clone My i3wm config 
 mv ~/.config/i3 ~/.config/i3_old
