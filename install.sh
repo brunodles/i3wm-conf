@@ -1,12 +1,16 @@
 #! /bin/bash
 
+echo 
+echo "We will install the fonts into system, so the root permission/password is required during installing"
+echo 
 # Install I3wm and I3blocks
 sudo apt-get install i3
 sudo apt-get install i3blocks
 
 # Clone My i3wm config 
-mkdir .config/i3
-cd .config/i3/
+mv ~/.config/i3 ~/.config/i3_old
+mkdir ~/.config/i3
+cd ~/.config/i3/
 git clone https://github.com/brunodles/i3wm-conf.git .
 
 # Install FontAwesome
@@ -15,17 +19,17 @@ wget https://github.com/FortAwesome/Font-Awesome/raw/master/fonts/fontawesome-we
 mv fontawesome-webfont.ttf ~/.fonts/
 
 # To change the background
-sudo apt-get install feh
+sudo apt-get install feh -y
 # File explorer
-sudo apt-get install thunar
+sudo apt-get install thunar -y
 # Custom theme
-sudo apt-get install gnome-icon-theme-full
-sudo apt-get install lxappearance
+sudo apt-get install gnome-icon-theme-full -y
+sudo apt-get install lxappearance -y
 # Lockscreen
-sudo apt-get install scrot
+sudo apt-get install scrot -y
 
 # Install zsh
-sudo apt-get install zsh
+sudo apt-get install zsh  -y
 chsh -s $(which zsh)
 
 # Install custom fonts
