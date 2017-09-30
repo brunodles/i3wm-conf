@@ -342,8 +342,14 @@ bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/volume -5% #decre
 bindsym XF86AudioMute exec --no-startup-id ~/.config/i3/volume mute_toggle # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+## bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+## bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec ~/.config/i3/backlight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec ~/.config/i3/backlight -dec 10 # decrease screen brightness
+
+# Screen color brightness
+bindsym $mod+XF86MonBrightnessUp exec ~/.config/i3/color-brightness eDP-1 -inc 0.05
+bindsym $mod+XF86MonBrightnessDown exec ~/.config/i3/color-brightness eDP-1 -dec 0.05
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play

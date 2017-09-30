@@ -1,0 +1,35 @@
+#!/bin/bash
+# parameters:
+#  1 - display
+#  2 - option
+#  3 - option parameter
+file="/tmp/brightness"
+display=$1
+if [ -f $file ]; then
+	brightness=$(cat $file)
+else
+	brightness=1
+fi
+case $2 in
+	-inc)
+	brightness=`echo "$brightness + $3" | bc -l`
+	echo $brightness>$file
+	xrandr --output $display --brightness $brightness
+	;;
+	-dec)
+	brightness=`echo "$brightness - $3" | bc -l`
+	echo $brightness>$file
+	xrandr --output $display --brightness $brightness
+	;;
+	-set)
+	brightness=$3
+	echo $brightness>$file
+	xrandr --output $display --brightness $brightness
+	;;
+	-get)
+	echo $brightness
+	;;
+	-rm)
+	rm $file
+	;;
+esac

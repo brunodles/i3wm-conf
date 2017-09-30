@@ -1,0 +1,21 @@
+#!/bin/bash
+file="/sys/class/backlight/*/brightness" 
+brightness=$(cat $file)
+max=$(cat /sys/class/backlight/*/max_brightness)
+case $1 in
+	-inc)
+	echo $(( $brightness + ( $2 * $max / 100  ) ))>$file
+	;;
+	-dec)
+	echo $(( $brightness - ( $2 * $max / 100  ) ))>$file
+	;;
+	-set)
+	echo $(( $2 * $max / 100 ))>$file
+	;;
+	-get)
+	echo $brightness
+	;;
+	-fix)
+	chmod +777 $file
+	;;
+esac
