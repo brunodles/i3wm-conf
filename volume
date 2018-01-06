@@ -1,10 +1,14 @@
 #!/bin/bash
-sink=$(pactl list sinks | grep -Po '^\w+ #(\d+)' | grep -Po '\K[\d]')
+sinks=$(pactl list sinks | grep -Po '^\w+ #(\d+)' | grep -Po '\K[\d]')
 case ${1:0:1} in
 	m|M)
-	pactl set-sink-mute $sink toggle
+		for sink in $sinks; do
+			pactl set-sink-mute $sink toggle
+		done
 	;;
 	*)
-	pactl set-sink-volume $sink $1
+	  for sink in $sinks; do
+			pactl set-sink-volume $sink $1
+		done
 	;;
 esac
