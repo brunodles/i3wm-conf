@@ -298,12 +298,17 @@ bar {
 exec --no-startup-id nm-applet
 # exec --no-startup-id wicd
 
+set $images ~/Pictures
+set $wallpapers ~/Pictures/Wallpapers
+set $lock_image ~/Pictures/face_circle.png
+set $print_path ~/Pictures/Screenshots/
+
 # Wallpaper
-#exec_always feh --bg-fill ~/Imagens/Wallpapers/jetpack-eye.jpg
-exec_always ~/.config/i3/background ~/Imagens/Wallpapers/
-#exec_always watch -n60 ~/.config/i3/background ~/Imagens/Wallpapers/
-exec while true; do ~/.config/i3/background ~/Imagens/Wallpapers/ ; sleep 60; done
-bindsym $mod+shift+b exec ~/.config/i3/background ~/Imagens/Wallpapers/
+#exec_always feh --bg-fill $wallpapers/jetpack-eye.jpg
+exec_always ~/.config/i3/background $wallpapers/
+#exec_always watch -n60 ~/.config/i3/background $wallpapers/
+exec while true; do ~/.config/i3/background $wallpapers/ ; sleep 60; done
+bindsym $mod+shift+b exec ~/.config/i3/background $wallpapers
 
 # make the focus follows the mouse
 #focus_follows_mouse yes
@@ -319,23 +324,23 @@ bindsym $mod+Return exec i3-sensible-terminal zsh
 
 
 # Lockscreen
-## bindsym $mod+shift+x exec ~/.config/i3/i3lock-extra -p 5 -m pixelize ~/Imagens/face_circle.png
-bindsym $mod+shift+x exec ~/.config/i3/i3lock-simple ~/Imagens/face_circle.png
-## bindsym $mod+control+x exec ~/.config/i3/i3lock-simple ~/Imagens/face_circle.png  && sudo pm-hibernate
+## bindsym $mod+shift+x exec ~/.config/i3/i3lock-extra -p 5 -m pixelize $lock_image
+bindsym $mod+shift+x exec ~/.config/i3/i3lock-simple $lock_image
+## bindsym $mod+control+x exec ~/.config/i3/i3lock-simple $lock_image  && sudo pm-hibernate
 
 
 # Printscreen / screenshoot
 
 ## Print
-bindsym Print exec scrot -e 'mv $f ~/Imagens/'
+bindsym Print exec scrot -e 'mv $f $print_path'
 bindsym --release control+Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
 
 ## Print selected area
-bindsym --release Shift+Print exec scrot -s -e 'mv $f ~/Imagens/'
+bindsym --release Shift+Print exec scrot -s -e 'mv $f $print_path'
 bindsym --release control+Shift+Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
 
 ## Print current window
-bindsym --release $mod+Print exec scrot -u -e 'mv $f ~/Imagens/'
+bindsym --release $mod+Print exec scrot -u -e 'mv $f $print_path'
 bindsym --release control+$mod+Print exec scrot -u -e 'mv $f /tmp/ && gimp /tmp/$f'
 
 ## ColorPicker
