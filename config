@@ -78,6 +78,12 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# move focused workspace
+bindsym $mod+control+Left move workspace to output left
+bindsym $mod+control+Down move workspace to output down
+bindsym $mod+control+Up move workspace to output up
+bindsym $mod+control+Right move workspace to output right
+
 # split in horizontal orientation
 bindsym $mod+h split h
 
