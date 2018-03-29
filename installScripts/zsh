@@ -1,0 +1,14 @@
+#! /bin/bash
+# Install zsh
+sudo apt-get install zsh  -y
+chsh -s $(which zsh)
+
+# Install zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# Install My custom zsh-theme
+mkdir ~/.oh-my-zsh/custom/themes
+curl -o ~/.oh-my-zsh/custom/themes/agnoster-lima.zsh-theme https://gist.githubusercontent.com/brunodles/9bb7c3ff4e2a7b9e9bddece9082c35ca/raw/lima-agnoster.zsh-theme
+
+# Install My .zshrc file
+curl -o ~/.zshrc https://gist.githubusercontent.com/brunodles/c0d5fa8dfddeb6af24dde4f1f00854a3/raw

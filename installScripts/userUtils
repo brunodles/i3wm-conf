@@ -1,0 +1,21 @@
+#! /bin/bash
+
+# To change the background
+echo "Install feh"
+sudo apt-get install feh -y
+
+# File explorer
+echo "Install thunar"
+sudo apt-get install thunar -y
+
+# Custom theme
+echo "Install gnome icon theme"
+sudo apt-get install gnome-icon-theme-full -y
+
+# Theme manager
+echo "Install LX Appearance"
+sudo apt-get install lxappearance -y
+
+# Screenshoot
+echo "Install scrot"
+sudo apt-get install scrot -y

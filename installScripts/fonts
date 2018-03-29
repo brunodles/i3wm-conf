@@ -1,0 +1,12 @@
+#! /bin/bash
+
+echo "Install FontAwesome"
+mkdir ~/.fonts
+cp font/fontawesome-webfont.ttf ~/.fonts/
+
+echo "Install powerline fonts"
+mkdir ~/customization
+cd ~/customization/
+git clone https://github.com/powerline/fonts.git
+cd fonts/
+./install.sh

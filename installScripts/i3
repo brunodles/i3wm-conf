@@ -1,0 +1,5 @@
+#! /bin/bash
+
+echo "Install I3wm and I3blocks"
+sudo apt-get install i3 -y
+sudo apt-get install i3blocks -y

@@ -1,0 +1,10 @@
+#! /bin/bash
+
+./basic
+
+echo "Clone i3wm config"
+mv ~/.config/i3 ~/.config/i3_old
+mkdir ~/.config/i3
+cd ~/.config/i3/
+git clone https://github.com/brunodles/i3wm-conf.git .
+./install
