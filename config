@@ -359,7 +359,7 @@ bindsym XF86MonBrightnessUp exec ~/.config/i3/backlight -inc 10 # increase scree
 bindsym XF86MonBrightnessDown exec ~/.config/i3/backlight -dec 10 # decrease screen brightness
 
 # Screen color brightness
-set $DISPLAY $(xrandr --verbose | grep -Po "(\w+)\s(?=connected)(?=.*primary)")
+set $DISPLAY $(xrandr --verbose | grep -Po "([\w-]+)\s(?=connected)(?=.*primary)")
 bindsym $mod+XF86MonBrightnessUp exec ~/.config/i3/color-brightness $DISPLAY -inc 0.05
 bindsym $mod+XF86MonBrightnessDown exec ~/.config/i3/color-brightness $DISPLAY -dec 0.05
 
