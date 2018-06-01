@@ -4,9 +4,11 @@ brightness=$(cat $file)
 max=$(cat /sys/class/backlight/*/max_brightness)
 case $1 in
 	-inc)
+	echo $(( $brightness + ( $2 * $max / 100  ) ))
 	echo $(( $brightness + ( $2 * $max / 100  ) ))>$file
 	;;
 	-dec)
+	echo $(( $brightness - ( $2 * $max / 100  ) ))
 	echo $(( $brightness - ( $2 * $max / 100  ) ))>$file
 	;;
 	-set)
@@ -14,6 +16,11 @@ case $1 in
 	;;
 	-get)
 	echo $brightness
+	;;
+        -info)
+	echo filename = $file
+        echo brightness = $brightness
+        echo max brightness = $max
 	;;
 	-fix)
 	chmod +777 $file
