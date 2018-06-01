@@ -5,8 +5,9 @@ text=$(pactl list sinks | grep '^[[:space:]]Volume:' | \
 # mute=${text#*%}
 text=(${text//%/ })
 pct=${text[0]}
-mute=${text[1]}
-if [ "$mute" = "off" ]; then
+mute=$(pactl list sinks | grep '^[[:space:]]Mute: yes')
+
+if [ ! -z "$mute" ]; then
 	echo " 🔇 muted ";
 elif [ $pct -lt 10 ] ; then
 	echo "  $pct% ";
@@ -15,3 +16,4 @@ elif [ $text -lt 50 ] ; then
 else
 	echo "  $pct% ";
 fi
+
