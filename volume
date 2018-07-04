@@ -1,5 +1,5 @@
 #!/bin/bash
-sinks=$(pactl list sinks | grep -Po '^\w+ #(\d+)' | grep -Po '\K[\d]')
+sinks=$(pactl list sinks | grep -Po '^\w+ #(\d+)' | grep -Po '\K[\d]+')
 case ${1:0:1} in
 	m|M)
 		for sink in $sinks; do
