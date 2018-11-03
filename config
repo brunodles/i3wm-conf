@@ -360,8 +360,9 @@ bindsym XF86MonBrightnessDown exec ~/.config/i3/backlight -dec 10 # decrease scr
 
 # Screen color brightness
 set $DISPLAY $(xrandr --verbose | grep -Po "([\w-]+)\s(?=connected)(?=.*primary)")
-bindsym $mod+XF86MonBrightnessUp exec ~/.config/i3/color-brightness $DISPLAY -inc 0.05
-bindsym $mod+XF86MonBrightnessDown exec ~/.config/i3/color-brightness $DISPLAY -dec 0.05
+bindsym --release $mod+XF86TouchpadToggle exec ~/.config/i3/color-brightness $DISPLAY -set 1.0
+bindsym --release $mod+XF86MonBrightnessUp exec ~/.config/i3/color-brightness $DISPLAY -inc 0.05
+bindsym --release $mod+XF86MonBrightnessDown exec ~/.config/i3/color-brightness $DISPLAY -dec 0.05
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
