@@ -346,7 +346,6 @@ bindsym --release control+$mod+Print exec scrot -u -e 'mv $f /tmp/ && gimp /tmp/
 ## ColorPicker
 bindsym --release $mod+Insert exec java -jar colorpicker.jar
 
-
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/volume +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/volume -5% #decrease sound volume
@@ -355,8 +354,8 @@ bindsym XF86AudioMute exec --no-startup-id ~/.config/i3/volume mute_toggle # mut
 # Sreen brightness controls
 ## bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 ## bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
-bindsym XF86MonBrightnessUp exec ~/.config/i3/backlight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec ~/.config/i3/backlight -dec 10 # decrease screen brightness
+bindsym --release XF86MonBrightnessUp exec ~/.config/i3/backlight -inc 10 # increase screen brightness
+bindsym --release XF86MonBrightnessDown exec ~/.config/i3/backlight -dec 10 # decrease screen brightness
 
 # Screen color brightness
 set $DISPLAY $(xrandr --verbose | grep -Po "([\w-]+)\s(?=connected)(?=.*primary)")
