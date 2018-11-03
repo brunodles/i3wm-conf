@@ -370,8 +370,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 
-
-bindsym $mod+p exec --no-startup-id i3-input -F 'exec "%s"' -P 'run> '
+#bindsym $mod+p exec --no-startup-id i3-input -F 'exec "%s"' -P 'run> '
 
 set $MENU "[A]ndroid Studio | [I]ntelliJ Idea | A[r]duino | [G]enyMotion"
 bindsym $mod+Shift+d mode $MENU
