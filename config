@@ -105,10 +105,10 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+z focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+x focus child
 
 set $ws1 "1:  "
 set $ws2 "2: >_ "
@@ -363,6 +363,30 @@ bindsym --release $mod+XF86TouchpadToggle exec ~/.config/i3/color-brightness $DI
 bindsym --release $mod+XF86MonBrightnessUp exec ~/.config/i3/color-brightness $DISPLAY -inc 0.05
 bindsym --release $mod+XF86MonBrightnessDown exec ~/.config/i3/color-brightness $DISPLAY -dec 0.05
 
+set $HDMI $(xrandr | grep -m 1 -Po "(HDMI[\w-]+)")
+set $MONITOR_MENU "[↑|↓|←|→] hdmi position | [O]ff hdmi "
+bindsym $mod+m mode $MONITOR_MENU
+mode $MONITOR_MENU {
+#  bindsym e exec xrandr --output $DISPLAY --auto, mode "default"
+  bindsym Up exec xrandr --output $HDMI --auto --above $DISPLAY, mode "default"
+  bindsym Down exec xrandr --output $HDMI --auto --below $DISPLAY, mode "default"
+  bindsym Left exec xrandr --output $HDMI --auto --left-of $DISPLAY, mode "default"
+  bindsym Right exec xrandr --output $HDMI --auto --right-of $DISPLAY, mode "default"
+  bindsym o exec xrandr --output $HDMI --off, mode "default"
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+set $SOUND $(pactl list cards | grep -Po "Name:\s(.+)" | cut -d' ' -f2)
+set $SOUND_MENU "[A]nalog | [H]dmi "
+bindsym $mod+n mode $SOUND_MENU
+mode $SOUND_MENU {
+  bindsym a exec pactl set-card-profile $SOUND output:analog-stereo+input:analog-stereo, mode "default"
+  bindsym h exec pactl set-card-profile $SOUND output:hdmi-stereo+input:analog-stereo, mode "default"
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
@@ -382,3 +406,91 @@ mode $MENU {
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
+ 
+
+# Mouse
+bindsym $mod+c exec xdotool click 1
+set $MOUSE_MODE "Mouse: [↑|↓|←|→] move | [a|s|d] click"
+bindsym $mod+Shift+m mode $MOUSE_MODE
+mode $MOUSE_MODE {
+
+	# set your three speeds here
+
+	set $slow 1
+	set $quick 10
+	set $fast 50
+  set $mod2 Mod1 # alt
+
+	# Mouse movement (slow/fine-tuned) -- vim keybindings
+
+	bindsym h exec xdotool mousemove_relative -- -$slow 0
+	bindsym j exec xdotool mousemove_relative 0 $slow
+	bindsym k exec xdotool mousemove_relative -- 0 -$slow
+	bindsym l exec xdotool mousemove_relative $slow 0
+
+	# Mouse movement (slow/fine-tuned) -- arrow keys
+
+	bindsym Left exec xdotool mousemove_relative -- -$slow 0
+	bindsym Down exec xdotool mousemove_relative 0 $slow
+	bindsym Up exec xdotool mousemove_relative -- 0 -$slow
+	bindsym Right exec xdotool mousemove_relative $slow 0
+
+	# Mouse movement (quicker) -- vim keybindings
+
+	bindsym Shift+h exec xdotool mousemove_relative -- -$quick 0
+	bindsym Shift+j exec xdotool mousemove_relative 0 $quick
+	bindsym Shift+k exec xdotool mousemove_relative -- 0 -$quick
+	bindsym Shift+l exec xdotool mousemove_relative $quick 0
+
+	# Mouse movement (quicker) -- arrow keys
+
+	bindsym Shift+Left exec xdotool mousemove_relative -- -$quick 0
+	bindsym Shift+Down exec xdotool mousemove_relative 0 $quick
+	bindsym Shift+Up exec xdotool mousemove_relative -- 0 -$quick
+	bindsym Shift+Right exec xdotool mousemove_relative $quick 0
+
+	# Mouse movement (fast) -- vim keybindings
+
+	bindsym Shift+$mod2+h exec xdotool mousemove_relative -- -$fast 0
+	bindsym Shift+$mod2+j exec xdotool mousemove_relative 0 $fast
+	bindsym Shift+$mod2+k exec xdotool mousemove_relative -- 0 -$fast
+	bindsym Shift+$mod2+l exec xdotool mousemove_relative $fast 0
+
+	# Mouse movement (fast) -- arrow keys
+
+	bindsym Shift+$mod2+Left exec xdotool mousemove_relative -- -$fast 0
+	bindsym Shift+$mod2+Down exec xdotool mousemove_relative 0 $fast
+	bindsym Shift+$mod2+Up exec xdotool mousemove_relative -- 0 -$fast
+	bindsym Shift+$mod2+Right exec xdotool mousemove_relative $fast 0
+
+	# Left Click
+	bindsym a exec xdotool click 1
+
+	# Middle Click
+	bindsym s exec xdotool click 2
+
+	# Right Click
+	bindsym d exec xdotool click 3
+
+	# Left Click-and-drag
+	bindsym Shift+a exec xdotool mousedown 1
+
+	# Middle Click-and-drag 
+	bindsym Shift+s exec xdotool mousedown 2
+
+	# Right Click-and-drag
+	bindsym Shift+d exec xdotool mousedown 3
+
+	# Left Drag release
+	bindsym $mod2+a exec xdotool mouseup 1
+
+	# Middle Drag release
+	bindsym $mod2+s exec xdotool mouseup 2
+
+	# Right Drag release
+	bindsym $mod2+d exec xdotool mouseup 3
+
+  # exit
+	bindsym Escape mode "default"
+}
+
