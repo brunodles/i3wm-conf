@@ -19,3 +19,8 @@ sudo apt-get install lxappearance -y
 # Screenshoot
 echo "Install scrot"
 sudo apt-get install scrot -y
+
+# Mouse click from keyboard
+# More https://www.reddit.com/r/i3wm/comments/3btki2/use_the_mouse_cursor_from_the_keyboard/
+echo "Install xdotool"
+sudo apt-get install xdotool
