@@ -23,6 +23,6 @@ case $1 in
         echo max brightness = $max
 	;;
 	-fix)
-	chmod +777 $file
+	sudo chmod +777 $file
 	;;
 esac
