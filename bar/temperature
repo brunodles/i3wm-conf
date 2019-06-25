@@ -1,0 +1,20 @@
+#!/bin/bash
+percent=$(cat /sys/devices/platform/coretemp*/hwmon/hwmon*/temp*_input | head -n 1 | grep -Po "\d+")
+percent=$(( $percent / 1000 ))
+full_text=""
+
+if [ $percent -lt 20 ]; then
+  full_text+="  ";
+elif [ $percent -lt 40 ]; then
+  full_text+="  ";
+elif [ $percent -lt 60 ]; then
+  full_text+="  ";
+elif [ $percent -lt 80 ]; then
+  full_text+="  ";
+else #if [ $percent < 100 ]
+  full_text+="  ";
+fi
+
+full_text+=" $percent "
+echo $full_text
+
