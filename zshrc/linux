@@ -1,0 +1,40 @@
+
+plugins=(git dotenv gradle)
+
+alias gs='git status'
+alias gt='git tag'
+alias gl='git log --all --graph --oneline --decorate'
+alias gc='git commit -m'
+alias gclean='git reset HEAD && git checkout . && git clean -fd'
+alias gb='git branch'
+alias gf='git fetch'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gmt='git merge --no-ff --no-commit'
+
+alias gowork='cd ~/workspace'
+
+alias cd..='cd ..'
+alias reload='. /etc/bash.bashrc'
+alias addToPath='PATH=$PATH:$(pwd)'
+
+alias dc='docker-compose'
+alias dcu='dc up'
+alias dcl='dc logs'
+alias drm='docker rmi $(docker images -q -f dangling=true)'
+
+alias as='sh android-studio/bin/studio.sh'
+alias idea='sh intellij-idea/bin/idea.sh'
+
+alias heroku="touch ~/.netrc && docker run --rm -it -v ~/.netrc:/root/.netrc -v $(pwd):/app -w /app brunodles/alpine-heroku-cli"
+alias firebase="mkdir $HOME/.config >/dev/null 2>&1 || docker run -it -v \"$(pwd):/home/node/app\" -v \"$HOME/.config:/home/node/.config\" -w \"/home/node/app\" --user=node -p 9005:9005 -p 5000:5000 brunodles/firebase-cli firebase"
+alias gsutil="mkdir $HOME/.config >/dev/null 2>&1 || docker run -it -v \"$(pwd):/home/app\" -v \"$HOME/.config:/home/.config\" -w \"/home/app\" google/cloud-sdk:alpine gsutil"
+alias gcloud="mkdir $HOME/.config >/dev/null 2>&1 || docker run -it -v \"$(pwd):/home/app\" -v \"$HOME/.config:/home/.config\" -w \"/home/app\" google/cloud-sdk:alpine gcloud"
+
+alias gradle='./gradlew'
+alias buck='./buckw'
+
+if [ -f ~/.term_sharedAliases ]; then
+  . ~/.term_sharedAliases
+fi
+

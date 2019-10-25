@@ -1,0 +1,40 @@
+# Setup environment variables
+export JAVA_HOME="$(/usr/libexec/java_home -v1.8)"
+
+export ANDROID_SDK=~/android-sdk
+export ANDROID_HOME=~/android-sdk
+export ANDROID_NDK=~/android-ndk
+export ANDROID_NDK_HOME=~/android-ndk
+
+# Add env vars to PATH
+export PATH="$JAVA_HOME/bin:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools/bin:$PATH"
+
+alias gs='git status'
+alias gt='git tag'
+alias gl='git log --all --graph --oneline --decorate'
+alias gc='git commit -m'
+alias gclean='git reset HEAD && git checkout . && git clean -fd'
+alias gb='git branch'
+alias gf='git fetch'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gmt='git merge --no-ff --no-commit'
+
+alias gowork='cd ~/workspace'
+
+alias cd..='cd ..'
+alias reload='. ~/.zshrc'
+
+alias dc='docker-compose'
+alias dcu='dc up'
+alias dcl='dc logs'
+alias drm='docker rmi $(docker images -q -f dangling=true)'
+
+alias as='sh android-studio/bin/studio.sh'
+alias idea='sh intellij-idea/bin/idea.sh'
+alias heroku="touch ~/.netrc && docker run --rm -it -v ~/.netrc:/root/.netrc -v $(pwd):/app -w /app brunodles/alpine-heroku-cli"
+alias nvim="docker run -it --rm -v ${PWD}:/workspace -v ~/.SpaceVim.d:/home/spacevim/.SpaceVim.d spacevim/spacevim nvim /workspace"
+
+alias buck='./buckw'
+alias gradle='./gradlew'
+
