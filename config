@@ -364,7 +364,7 @@ bindsym --release $mod+XF86MonBrightnessUp exec ~/.config/i3/color-brightness $D
 bindsym --release $mod+XF86MonBrightnessDown exec ~/.config/i3/color-brightness $DISPLAY -dec 0.05
 
 set $HDMI $(xrandr | grep -m 1 -Po "(HDMI[\w-]+)")
-set $MONITOR_MENU "[↑|↓|←|→] hdmi position | [O]ff hdmi "
+set $MONITOR_MENU "[↑|↓|←|→] hdmi position | [O]ff hdmi"
 bindsym $mod+m mode $MONITOR_MENU
 mode $MONITOR_MENU {
 #  bindsym e exec xrandr --output $DISPLAY --auto, mode "default"
@@ -373,6 +373,7 @@ mode $MONITOR_MENU {
   bindsym Left exec xrandr --output $HDMI --auto --left-of $DISPLAY, mode "default"
   bindsym Right exec xrandr --output $HDMI --auto --right-of $DISPLAY, mode "default"
   bindsym o exec xrandr --output $HDMI --off, mode "default"
+  bindsym --release m exec ~/.config/i3/display_mirror.kts $DISPLAY $HDMI, mode "default"
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
