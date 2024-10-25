@@ -1,9 +1,16 @@
 #!/bin/bash
+# i3lock-simle
+# This script will:
+# 1. take screenshot of the screen
+# 2. pixelize the image, by scaling down and them scale up the image
+# 3. if an overlay image exist, merge the screenshot with the overlay
+# 4. lock the screen with the image
+# Author: Bruno de Lima <github.com/brunodles>
 
 tmp=/tmp/screen.png
-cfg_pixelize_scale='5'
+cfg_pixelize_scale='10'
 scale_down=$(( 100/cfg_pixelize_scale ))
-scale_up=$(( ( 100/cfg_pixelize_scale ) * cfg_pixelize_scale * cfg_pixelize_scale ))
+scale_up=$(( 100*cfg_pixelize_scale ))
 scrot -e "convert \$f -scale "$scale_down"% -scale "$scale_up"% ${tmp}" "${tmp}"
 
 if [[ -f $1 ]] ; then
