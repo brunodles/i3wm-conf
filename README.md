@@ -1,3 +1,7 @@
+# My i3wm configuration
+![terminals](images/terminals.png)
+![lockscreen](images/lockscreen.png)
+
 # Things to install
 To make it work, we need to install some tools.
 
